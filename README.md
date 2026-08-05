@@ -231,4 +231,6 @@ This project provided practical experience with:
 
 GitHub: https://github.com/mari-blom
 
-Software Engineering Bootcamp Student at HyperionDev.
+Aspiring Software Developer with experience in Python, Django, SQL, HTML, CSS, Bootstrap, Git, and full-stack web application development.
+Recently graduated from HyperionDev.
+
