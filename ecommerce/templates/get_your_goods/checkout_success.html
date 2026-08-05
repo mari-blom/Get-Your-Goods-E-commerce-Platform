@@ -1,0 +1,45 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Checkout Successful
+{% endblock %}
+
+{% block content %}
+
+<h2>Thank You for Your Purchase!</h2>
+
+<p>Your order has been placed successfully.</p>
+
+<h3>Invoice</h3>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+    </tr>
+
+    {% for item in invoice_items %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>R{{ item.price }}</td>
+        <td>R{{ item.subtotal }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Total: R{{ total }}</h3>
+
+<p>
+    Your shopping cart has been emptied and an invoice has been generated.
+</p>
+
+<p>
+    <a href="{% url 'get_your_goods:browse_products' %}">
+        Continue Shopping
+    </a>
+</p>
+
+{% endblock %}

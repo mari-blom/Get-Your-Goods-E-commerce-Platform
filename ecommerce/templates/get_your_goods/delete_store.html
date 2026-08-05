@@ -1,0 +1,25 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Delete Store
+{% endblock %}
+
+{% block content %}
+
+<h2>Delete Store</h2>
+
+<p>
+    Are you sure you want to delete
+    <strong>{{ store.name }}</strong>?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <button type="submit">
+        Yes, Delete Store
+    </button>
+
+</form>
+
+{% endblock %}

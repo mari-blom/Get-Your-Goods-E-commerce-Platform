@@ -1,0 +1,88 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+My Products
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">My Products</h2>
+
+<p class="mb-4">
+    <a href="{% url 'get_your_goods:create_product' %}"
+       class="btn btn-success">
+        Create Another Product
+    </a>
+</p>
+
+{% if products %}
+
+<div class="row">
+
+    {% for product in products %}
+
+    <div class="col-md-6 col-lg-4 mb-4">
+
+        <div class="card h-100">
+
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    {{ product.name }}
+                </h4>
+
+                <p class="card-text">
+                    <strong>Store:</strong>
+                    {{ product.store.name }}
+                </p>
+
+                <p class="card-text">
+                    {{ product.description }}
+                </p>
+
+                <p>
+                    <strong>Price:</strong>
+                    R{{ product.price }}
+                </p>
+
+                <p>
+                    <strong>Stock:</strong>
+                    {{ product.stock }}
+                </p>
+
+            </div>
+
+            <div class="card-footer bg-white">
+
+                <a href="{% url 'get_your_goods:edit_product' product.id %}"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="{% url 'get_your_goods:delete_product' product.id %}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<p>You haven't created any products yet.</p>
+
+<a href="{% url 'get_your_goods:create_product' %}"
+   class="btn btn-primary">
+    Create Your First Product
+</a>
+
+{% endif %}
+
+{% endblock %}

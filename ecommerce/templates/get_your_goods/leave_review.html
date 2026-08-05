@@ -1,0 +1,52 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block content %}
+
+{% if review %}
+    <h2>Edit Your Review</h2>
+{% else %}
+    <h2>Leave a Review</h2>
+{% endif %}
+
+<h3>{{ product.name }}</h3>
+
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+    <label>Rating (1-5)</label><br>
+    <input
+        type="number"
+        name="rating"
+        min="1"
+        max="5"
+        value="{{ review.rating }}"
+        required>
+    </p>
+
+    <p>
+    <label>Comment</label><br>
+    <textarea
+        name="comment"
+        rows="5"
+        cols="50"
+        required>{{ review.comment }}</textarea>
+</p>
+
+    <button type="submit">
+    {% if review %}
+        Update Review
+    {% else %}
+        Submit Review
+    {% endif %}
+    </button>
+
+    <p>
+    <a href="{% url 'get_your_goods:browse_products' %}">
+        Cancel
+    </a>
+    </p>
+
+</form>
+
+{% endblock %}

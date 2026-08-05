@@ -1,0 +1,37 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block content %}
+
+<h2>Thank you for your purchase!</h2>
+
+<p>Your order has been completed successfully.</p>
+
+<h3>Invoice</h3>
+
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+    </tr>
+
+    {% for item in invoice_items %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>R{{ item.price }}</td>
+        <td>R{{ item.subtotal }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Total: R{{ total }}</h3>
+
+<p>
+    <a href="{% url 'get_your_goods:browse_products' %}">
+        Continue Shopping
+    </a>
+</p>
+
+{% endblock %}

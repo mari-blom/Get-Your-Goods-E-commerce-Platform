@@ -1,0 +1,56 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Buyer Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Welcome, {{ request.user.username }}!
+</h1>
+
+<h2 class="mb-4">
+    Buyer Dashboard
+</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'get_your_goods:browse_products' %}"
+           class="btn btn-primary w-100 py-4">
+            Browse Products
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'get_your_goods:view_cart' %}"
+           class="btn btn-success w-100 py-4">
+            View Cart
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'get_your_goods:checkout' %}"
+           class="btn btn-warning w-100 py-4">
+            Checkout
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'get_your_goods:my_reviews' %}"
+           class="btn btn-info w-100 py-4">
+            My Reviews
+        </a>
+    </div>
+
+</div>
+
+<div class="mt-5">
+    <a href="{% url 'get_your_goods:logout' %}"
+       class="btn btn-outline-danger">
+        Logout
+    </a>
+</div>
+
+{% endblock %}

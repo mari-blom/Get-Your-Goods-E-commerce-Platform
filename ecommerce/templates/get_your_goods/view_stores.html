@@ -1,0 +1,71 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+My Stores
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">My Stores</h2>
+
+{% if stores %}
+
+<div class="row">
+
+    {% for store in stores %}
+
+    <div class="col-md-6 col-lg-4 mb-4">
+
+        <div class="card h-100">
+
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    {{ store.name }}
+                </h4>
+
+                <p class="card-text">
+                    {{ store.description }}
+                </p>
+
+            </div>
+
+            <div class="card-footer bg-white">
+
+                <a href="{% url 'get_your_goods:store_detail' store.id %}"
+                class="btn btn-primary btn-sm">
+                    View Store
+                </a>
+
+                <a href="{% url 'get_your_goods:edit_store' store.id %}"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="{% url 'get_your_goods:delete_store' store.id %}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<p>You haven't created any stores yet.</p>
+
+<a href="{% url 'get_your_goods:create_store' %}"
+   class="btn btn-primary">
+    Create Your First Store
+</a>
+
+{% endif %}
+
+{% endblock %}

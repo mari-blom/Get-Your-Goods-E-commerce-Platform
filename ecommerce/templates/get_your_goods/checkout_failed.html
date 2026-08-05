@@ -1,0 +1,39 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Checkout Failed
+{% endblock %}
+
+{% block content %}
+
+<h2>Checkout Failed</h2>
+
+<p>
+    Unfortunately, there is not enough stock available to complete your order.
+</p>
+
+<p>
+    <strong>Product:</strong> {{ product.name }}
+</p>
+
+<p>
+    <strong>Available Stock:</strong> {{ product.stock }}
+</p>
+
+<p>
+    Please update your shopping cart and try again.
+</p>
+
+<p>
+    <a href="{% url 'get_your_goods:view_cart' %}">
+        Return to Shopping Cart
+    </a>
+</p>
+
+<p>
+    <a href="{% url 'get_your_goods:browse_products' %}">
+        Continue Shopping
+    </a>
+</p>
+
+{% endblock %}

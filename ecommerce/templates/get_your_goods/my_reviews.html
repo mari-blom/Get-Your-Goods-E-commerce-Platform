@@ -1,0 +1,49 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+My Reviews
+{% endblock %}
+
+{% block content %}
+
+<h2>My Reviews</h2>
+
+{% if reviews %}
+
+    {% for review in reviews %}
+
+        <hr>
+
+        <h3>{{ review.product.name }}</h3>
+
+        <p>
+            Rating: {{ review.rating }}/5
+        </p>
+
+        <p>
+            {{ review.comment }}
+        </p>
+
+        <p>
+            {% if review.verified %}
+                ✔ Verified Review
+            {% else %}
+                Unverified Review
+            {% endif %}
+        </p>
+
+        <p>
+            <a href="{% url 'get_your_goods:leave_review' review.product.id %}">
+                Edit Review
+            </a>
+        </p>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>You haven't written any reviews yet.</p>
+
+{% endif %}
+
+{% endblock %}

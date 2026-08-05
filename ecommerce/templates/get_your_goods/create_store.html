@@ -1,0 +1,27 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Create Store
+{% endblock %}
+
+{% block content %}
+
+<h2>Create Store</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+        <label>Store Name</label><br>
+        <input type="text" name="name" style="width: 30%;" required>
+    </p>
+
+    <p>
+        <label>Description</label><br>
+        <textarea name="description"></textarea>
+    </p>
+
+    <button type="submit">Create Store</button>
+</form>
+
+{% endblock %}

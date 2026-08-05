@@ -1,0 +1,26 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Email Sent
+{% endblock %}
+
+{% block content %}
+
+<h2>Password Reset Email Sent</h2>
+
+<p>
+    If an account exists with that email address,
+    a password reset email has been sent.
+</p>
+
+<p>
+    Please check your inbox.
+</p>
+
+<p>
+    <a href="{% url 'get_your_goods:login' %}">
+        Return to Login
+    </a>
+</p>
+
+{% endblock %}

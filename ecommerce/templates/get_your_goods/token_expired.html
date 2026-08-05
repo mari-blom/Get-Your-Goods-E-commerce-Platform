@@ -1,0 +1,25 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Reset Link Expired
+{% endblock %}
+
+{% block content %}
+
+<h2>Password Reset Link Expired</h2>
+
+<p>
+    This password reset link has expired or has already been used.
+</p>
+
+<p>
+    Please request a new password reset email.
+</p>
+
+<p>
+    <a href="{% url 'get_your_goods:forgot_password' %}">
+        Request a New Reset Link
+    </a>
+</p>
+
+{% endblock %}

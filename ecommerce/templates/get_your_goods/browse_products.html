@@ -1,0 +1,96 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">Browse Products</h2>
+
+{% if products %}
+
+<div class="row">
+
+{% for product in products %}
+
+<div class="col-md-6 col-lg-4 mb-4">
+
+    <div class="card h-100">
+
+        <div class="card-body">
+
+            <h5 class="card-title">
+                {{ product.name }}
+            </h5>
+
+            <p class="card-text">
+                <strong>Store:</strong>
+                {{ product.store.name }}
+            </p>
+
+            <p class="card-text">
+                {{ product.description }}
+            </p>
+
+            <p>
+                <strong>Price:</strong>
+                R{{ product.price }}
+            </p>
+
+            <p>
+                <strong>Stock:</strong>
+                {{ product.stock }}
+            </p>
+
+        </div>
+
+        <div class="card-footer bg-white">
+
+            <a
+                href="{% url 'get_your_goods:product_detail' product.id %}"
+                class="btn btn-primary btn-sm">
+
+                View Details
+
+            </a>
+
+            <a
+                href="{% url 'get_your_goods:leave_review' product.id %}"
+                class="btn btn-secondary btn-sm">
+
+                Review
+
+            </a>
+
+            {% if product.stock > 0 %}
+
+                <a
+                    href="{% url 'get_your_goods:add_to_cart' product.id %}"
+                    class="btn btn-success btn-sm">
+
+                    Add to Cart
+
+                </a>
+
+            {% else %}
+
+                <span class="text-danger">
+                    Out of Stock
+                </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<p>No products available.</p>
+
+{% endif %}
+
+{% endblock %}

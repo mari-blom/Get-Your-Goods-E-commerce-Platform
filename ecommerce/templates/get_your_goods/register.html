@@ -1,0 +1,46 @@
+{% extends 'get_your_goods/base.html' %}
+{% block title %} 
+    Get Your Goods - Register
+{% endblock %} 
+{% block content %} 
+
+<h2>Register</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+        <label for="username">Username:</label><br>
+        <input type="text" name="username" required>
+    </p>
+
+    <p>
+        <label for="email">Email:</label><br>
+        <input type="email" name="email" required>
+    </p>
+
+    <p>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" required>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" required>
+    </p>
+
+    <p>
+        <label for="role">Register as:</label><br>
+        <select name="role">
+            <option value="buyer">Buyer</option>
+            <option value="vendor">Vendor</option>
+        </select>
+    </p>
+    <button type="submit">Register</button>
+    
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    
+</form>
+
+
+{% endblock %}

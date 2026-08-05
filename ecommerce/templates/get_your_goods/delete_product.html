@@ -1,0 +1,30 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+Delete Product
+{% endblock %}
+
+{% block content %}
+
+<h2>Delete Product</h2>
+
+<p>
+    Are you sure you want to delete
+    <strong>{{ product.name }}</strong>?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <button type="submit">
+        Yes, Delete Product
+    </button>
+</form>
+
+<p>
+    <a href="{% url 'get_your_goods:view_products' %}">
+        Cancel
+    </a>
+</p>
+
+{% endblock %}

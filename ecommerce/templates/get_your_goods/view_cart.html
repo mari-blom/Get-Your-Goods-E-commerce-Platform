@@ -1,0 +1,70 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block content %}
+
+<h2>My Shopping Cart</h2>
+
+{% if items %}
+
+<table>
+
+<tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Subtotal</th>
+    <th>Remove</th>
+</tr>
+
+{% for item in items %}
+
+<tr>
+    <td>{{ item.product.name }}</td>
+    <td>
+
+        <a href="{% url 'get_your_goods:decrease_quantity' item.product.id %}">
+            -
+        </a>
+        {{ item.quantity }}
+        <a href="{% url 'get_your_goods:increase_quantity' item.product.id %}">
+            +
+        </a>
+    </td>
+    <td>R{{ item.product.price }}</td>
+    <td>R{{ item.subtotal }}</td>
+    <td>
+        <a href="{% url 'get_your_goods:remove_from_cart' item.product.id %}">
+            Remove
+        </a>
+    </td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h3>Total: R{{ total }}</h3>
+
+<p>
+    <a href="{% url 'get_your_goods:browse_products' %}">
+    Continue Shopping
+    </a>
+    |
+    <a href="{% url 'get_your_goods:checkout' %}">
+    Checkout
+    </a>
+</p>
+
+{% else %}
+
+<p>Your cart is empty.</p>
+
+<p>
+    <a href="{% url 'get_your_goods:browse_products' %}">
+    Browse Products
+    </a>
+</p>
+
+{% endif %}
+
+{% endblock %}

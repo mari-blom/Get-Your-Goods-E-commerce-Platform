@@ -1,0 +1,69 @@
+{% extends 'get_your_goods/base.html' %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ product.name }}</h2>
+
+<p><strong>Price:</strong> R{{ product.price }}</p>
+
+<p><strong>Stock:</strong> {{ product.stock }}</p>
+
+<p>{{ product.description }}</p>
+
+<p>
+    <a href="{% url 'get_your_goods:add_to_cart' product.id %}">
+        Add to Cart
+    </a>
+</p>
+
+<p>
+    <a href="{% url 'get_your_goods:leave_review' product.id %}">
+        Leave Review
+    </a>
+</p>
+
+<hr>
+
+<h3>Reviews</h3>
+
+{% for review in reviews %}
+
+<div style="margin-bottom:20px;">
+
+    <strong>{{ review.buyer.username }}</strong><br>
+
+    {% if review.verified %}
+        <span style="color:green;">✔ Verified Review</span>
+    {% else %}
+        <span style="color:gray;">Unverified Review</span>
+    {% endif %}
+
+    <p>
+        Rating: {{ review.rating }}/5
+    </p>
+
+    <p>
+        {{ review.comment }}
+    </p>
+
+</div>
+
+{% empty %}
+
+<p>No reviews have been posted yet.</p>
+
+{% endfor %}
+
+<hr>
+
+<p>
+    <a href="{% url 'get_your_goods:browse_products' %}">
+        ← Back to Products
+    </a>
+</p>
+
+{% endblock %}
